@@ -1,0 +1,34 @@
+@model Dish
+
+<h1 class="text-center">@Model.Name</h1>
+<div class="text-center">
+    <a href="/dishes/all">Home</a> | <a href="/dishes/new">Add a Dish</a>
+</div>
+
+@* Accessing each attribute through our Dish Model *@
+<div>
+    @Model.Name by @Model.Chef
+    <hr>
+    <p> Description: @Model.Description</p>
+    <p>Calories: @Model.Calories</p>
+    <p>Tastiness: @Model.Tastiness</p>
+</div>
+
+<form 
+    asp-controller="Dish" 
+    asp-action="DeletePost" 
+    asp-route-id="@Model.DishId" 
+    method="POST"
+    >
+    @* Styling the POST button in order to Delete selected Dish profile *@
+    <button class="btn btn-outline-danger">Delete</button>
+</form>
+
+<a
+    asp-controller="Dish" 
+    asp-action="EditDish" 
+    asp-route-DishId="@Model.DishId" 
+    class=" btn btn-outline-primary"
+    >
+    Edit Dish
+</a>

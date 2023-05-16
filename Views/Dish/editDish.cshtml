@@ -1,0 +1,51 @@
+@model Dish
+
+@* Navigation bar *@
+<div class="text-center">
+    <h1>Edit @Model.Name</h1>
+    <a href="/dishes/all">Home</a> | <a href="/dishes/new">Add a Dish</a>
+</div>
+<hr>
+@* This form will allow each user to be able to make updates to their already inputted recipes *@
+<form 
+    asp-controller="Dish" 
+    asp-action="Update"
+    asp-route-DishId="@Model.DishId"
+    method="POST"
+    >
+
+    <div>
+        <label asp-for="Chef">Chef's Name:</label>
+        <span asp-validation-for="Chef"></span>
+        <input asp-for="Chef" />
+    </div>
+    <div>
+        <label asp-for="Chef">Name of Dish:</label>
+        <span asp-validation-for="Name"></span>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Chef"># of Calories:</label>
+        <span asp-validation-for="Calories"></span>
+        <input asp-for="Calories" />
+    </div>
+    <div>
+        <label asp-for="Chef">Tastiness:</label>
+        <span asp-validation-for="Tastiness"></span>
+        <select name="Tastiness">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div>
+        <label asp-for="Description">Description:</label>
+        <span asp-validation-for="Description"></span>
+        <br>
+        <textarea asp-for="Description" cols="30" rows="5"></textarea>
+    </div>
+    <button class="btn btn-success">Edit Dish</button>
+</form>

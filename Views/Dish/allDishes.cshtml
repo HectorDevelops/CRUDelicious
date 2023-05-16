@@ -1,0 +1,19 @@
+@* importing the model list to ensure one is able to display List and it's attributes*@
+@model List<Dish>
+
+<div class="text-center">
+    <h1>KLK QUE DICEN LOS ÑIGOMOTYS</h1>
+    <a href="/dishes/all">Home</a> | <a href="/dishes/new">Add a Dish</a>
+    <p>Check out some recent dishes below:</p>
+</div>
+
+@* this foreach loop ensures to display each inputted recipe by users *@
+@foreach (Dish eachDish in Model)
+{
+    <div>
+        <a asp-controller="Dish" 
+        asp-action="ViewOne" 
+        asp-route-DishId="@eachDish.DishId"
+        >@eachDish.Name</a> by @eachDish.Chef
+    </div>
+}
